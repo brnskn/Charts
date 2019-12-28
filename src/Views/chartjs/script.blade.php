@@ -12,7 +12,7 @@
         window.{{ $chart->id }} = new Chart(document.getElementById("{{ $chart->id }}").getContext("2d"), {
             type: {!! $chart->type ? "'{$chart->type}'" : 'data[0].type' !!},
             data: {
-                labels: {!! $chart->formatLabels() !!},
+                labels: data[0].labels,
                 datasets: data
             },
             options: {!! $chart->formatOptions(true) !!},
@@ -32,6 +32,7 @@
                 document.getElementById("{{ $chart->id }}_loader").style.display = 'none';
                 document.getElementById("{{ $chart->id }}").style.display = 'block';
                 {{ $chart->id }}.data.datasets = data;
+                {{ $chart->id }}.data.labels = data[0].labels;
                 {{ $chart->id }}.update();
             });
     };
