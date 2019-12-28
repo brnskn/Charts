@@ -97,4 +97,22 @@ trait Dataset
             'label' => $label,
         ]);
     }
+    
+    /**
+     * Set the chart labels.
+     *
+     * @param $labels array|Collection $color
+     *
+     * @return self
+     */
+    public function labels($labels)
+    {
+        if ($labels instanceof Collection) {
+            $labels = $labels->toArray();
+        }
+
+        return $this->options([
+            'labels' => $labels,
+        ]);
+    }
 }
